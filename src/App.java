@@ -1,0 +1,22 @@
+public class App {
+
+    public static void main(String[] args) throws Exception {
+        Salvadanaio s=new Salvadanaio();
+
+        Azione inserisciMonete =new Azione(s,true);
+        inserisciMonete.start();
+
+
+        Azione prelevaMonete =new Azione(s,false);
+        prelevaMonete.start();
+
+        System.out.println("I Threads sono partiti");
+        
+        inserisciMonete.join();
+        prelevaMonete.join();
+
+        System.out.println("I Threads hanno finito");
+        System.out.println(Salvadanaio.monete);
+    
+    }
+}
